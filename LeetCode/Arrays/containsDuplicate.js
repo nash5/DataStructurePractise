@@ -2,7 +2,7 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-var containsDuplicate = function (nums) {
+var containsDuplicateCounter = function (nums) {
     let counter = {};
     for (i = 0; i < nums.length; i++) {
         counter[nums[i]] ? counter[nums[i]] += 1 : counter[nums[i]] = 1;
@@ -17,12 +17,33 @@ var containsDuplicate = function (nums) {
     return false;
 };
 
-// console.log(validAnagram('cinema', 'iceman'));
-
-console.log(containsDuplicate([1, 2, 3, 4, 1, 1]));
 
 // Using Filter method
 
-function duplicateArray(arr) {
+function containsDuplicateFilter(arr) {
     return arr.filter((v, i) => arr.indexOf(v) !== i).length > 0;
 }
+
+function containsDuplicateSet(arr) {
+    let uniqueSet = new Set(arr);
+
+    if (arr.length === uniqueSet.size) {
+        return false;
+    }
+
+    return true;
+}
+
+(function test() {
+    let arr = [1, 2, 3, 5];
+
+    let a = arr.forEach(v => {
+        if (v > 3) return arr.indexOf(v);
+    });
+    for(let i = 0; i < arr.length; i++) {
+        if (arr[i] > 3) return i;
+
+    }
+})();
+
+console.log(containsDuplicateSet([1, 2, 3, 4,]));

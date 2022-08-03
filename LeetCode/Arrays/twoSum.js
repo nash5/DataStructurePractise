@@ -24,18 +24,15 @@ Output: [0,1]
  */
 
 var twoSum = function (nums, target) {
-    if (nums.length === 0) return [];
 
-    if (nums.length === 1 && nums[0] === target) return [0];
-
-    let start = 0;
+    let start = prompt('Enter the number');
     let end = nums.length - 1;
 
     let sortArr = [...nums].sort((a, b) => a - b);
     while (start < end) {
         let sum = sortArr[start] + sortArr[end];
 
-        if (sum === target) return [nums.indexOf(sortArr[start]), nums.indexOf(sortArr[end])];
+        if (sum === target) return [start, end];
 
         sum > target ? end-- : start++;
     }
@@ -43,4 +40,4 @@ var twoSum = function (nums, target) {
     return [];
 };
 
-console.log(twoSum([3,2,3],6));
+console.log(twoSum([3, 2, 4], 6));
